@@ -1,0 +1,13 @@
+No. 
+Nama Siswa 
+NIS_Siswa 
+Nilai Tugas Harian 
+PTS 
+HPTS
+Nilai Raport Mid 
+Predikat Mid
+HPH 
+PAS 
+HPAS
+Nilai Rapot Final 
+Deskripsi
