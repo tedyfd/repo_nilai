@@ -12,11 +12,17 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="POST" action="<?= base_url('admin/guru_add') ?>" id="form">
+                <form method="POST" action="<?= base_url('guru/nilai_siswa_add') ?>" id="form">
                     <h6 class="heading-small text-muted mb-4"></h6>
                     <div class="pl-lg-4">
                         <input type="hidden" name="id_nilai" id="id_nilai" class="form-control"
                             value="<?= $nilai['id_nilai'] ?>">
+                        <input type="hidden" name="th_ajaran" id="th_ajaran" class="form-control"
+                            value="<?= $nilai['th_ajaran'] ?>">
+                        <input type="hidden" name="kelas" id="kelas" class="form-control"
+                            value="<?= $nilai['kelas'] ?>">
+                        <input type="hidden" name="matpel" id="matpel" class="form-control"
+                            value="<?= $nilai['matpel'] ?>">
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label class="form-control-label" for="nis">nis</label>
@@ -37,7 +43,7 @@
                                 <label class="form-control-label" for="">Kelas</label>
                                 <input type="text" name="" id="" class="form-control" value="<?= $nilai['kelas'] ?>"
                                     disabled>
-                            </div>s
+                            </div>
                             <div class="form-group col-lg-4">
                                 <label class="form-control-label" for="">Matapelajaran</label>
                                 <input type="text" name="" id="" class="form-control" value="<?= $nilai['matpel'] ?>"

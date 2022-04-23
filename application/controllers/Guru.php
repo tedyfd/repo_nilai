@@ -89,5 +89,21 @@ class Guru extends CI_Controller
         $kelas = $this->input->post('kelas');
         $matpel = $this->input->post('matpel');
         $nilai = $this->input->post('nilai');
+
+        $data = [
+            'nis' => $nis,
+            'th_ajaran' => $th_ajaran,
+            'kelas' => $kelas,
+            'matpel' => $matpel,
+            'nilai' => $nilai
+        ];
+        if ($id_nilai == '') {
+            $this->db->insert('nilai', $data);
+            $this->session->set_flashdata('message', 'telah ditambahkan');
+            redirect('guru/nilai');
+        } else {
+            $this->db->where('id_nilai', $id_nilai);
+            $this->db->update('nilai', $data);
+        }
     }
 }
