@@ -25,9 +25,9 @@
                             value="<?= $nilai['matpel'] ?>">
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label class="form-control-label" for="nis">nis</label>
-                                <input type="text" name="nis" id="nis" class="form-control"
-                                    value="<?= $nilai['nis'] ?>">
+                                <label class="form-control-label" for="nis_siswa">nis</label>
+                                <input type="text" name="nis_siswa" id="nis_siswa" class="form-control"
+                                    value="<?= $nilai['nis_siswa'] ?>">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label class="form-control-label" for="nama">nama</label>
@@ -49,11 +49,77 @@
                                 <input type="text" name="" id="" class="form-control" value="<?= $nilai['matpel'] ?>"
                                     disabled>
                             </div>
-                            <div class="col-lg-12">
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="form-control-label" for="nilai">Nilai</label>
                                     <input type="number" name="nilai" id="nilai" class="form-control"
                                         value="<?= $nilai['nilai'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="tugas_harian">Tugas Harian</label>
+                                    <input type="number" name="tugas_harian" id="tugas_harian" class="form-control"
+                                        value="<?= $nilai['tugas_harian'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="pts">PTS</label>
+                                    <input type="number" name="pts" id="pts" class="form-control"
+                                        value="<?= $nilai['pts'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="hpts">HPTS</label>
+                                    <input type="number" name="hpts" id="hpts" class="form-control"
+                                        value="<?= $nilai['hpts'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="nilai_raport_mid">Nilai Raport Mid</label>
+                                    <input type="number" name="nilai_raport_mid" id="nilai_raport_mid"
+                                        class="form-control" value="<?= $nilai['nilai_raport_mid'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="hph">HPH</label>
+                                    <input type="number" name="hph" id="hph" class="form-control"
+                                        value="<?= $nilai['hph'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="pas">PAS</label>
+                                    <input type="number" name="pas" id="pas" class="form-control"
+                                        value="<?= $nilai['pas'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="hpas">hpas</label>
+                                    <input type="number" name="hpas" id="hpas" class="form-control"
+                                        value="<?= $nilai['hpas'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                        for="nilai_raport_final">nilai_raport_final</label>
+                                    <input type="number" name="nilai_raport_final" id="nilai_raport_final"
+                                        class="form-control" value="<?= $nilai['nilai_raport_final'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="deskripsi">Deskripsi</label>
+                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control"
+                                        value="<?= $nilai['deskripsi'] ?>">
                                 </div>
                             </div>
                         </div>

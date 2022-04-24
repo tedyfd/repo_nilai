@@ -70,7 +70,7 @@ class Guru extends CI_Controller
 
         $data['page'] = 'Nilai';
         $data['profile'] = $this->db->get_where('guru', array('nip' => $this->session->userdata('username')))->row_array();
-        $data['nilai'] = $this->db->query("SELECT siswa.*, kelas_ajaran.th_ajaran,kelas.kelas, matpel.matpel, nilai.id_nilai,nilai.nilai  from siswa
+        $data['nilai'] = $this->db->query("SELECT siswa.*, siswa.nis as nis_siswa, kelas_ajaran.th_ajaran,kelas.kelas, matpel.matpel, nilai.*  from siswa
         inner join siswa_kelas on siswa.nis = siswa_kelas.nis
         inner join kelas_ajaran on siswa_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
         inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
@@ -84,18 +84,36 @@ class Guru extends CI_Controller
     public function nilai_siswa_add()
     {
         $id_nilai = $this->input->post('id_nilai');
-        $nis = $this->input->post('nis');
+        $nis_siswa = $this->input->post('nis_siswa');
         $th_ajaran = $this->input->post('th_ajaran');
         $kelas = $this->input->post('kelas');
         $matpel = $this->input->post('matpel');
         $nilai = $this->input->post('nilai');
+        $tugas_harian = $this->input->post('tugas_harian');
+        $pts = $this->input->post('pts');
+        $hpts = $this->input->post('hpts');
+        $nilai_raport_mid = $this->input->post('nilai_raport_mid');
+        $hph = $this->input->post('hph');
+        $pas = $this->input->post('pas');
+        $hpas = $this->input->post('hpas');
+        $nilai_raport_final = $this->input->post('nilai_raport_final');
+        $deskripsi = $this->input->post('deskripsi');
 
         $data = [
-            'nis' => $nis,
+            'nis' => $nis_siswa,
             'th_ajaran' => $th_ajaran,
             'kelas' => $kelas,
             'matpel' => $matpel,
-            'nilai' => $nilai
+            'nilai' => $nilai,
+            'tugas_harian' => $tugas_harian,
+            'pts' => $pts,
+            'hpts' => $hpts,
+            'nilai_raport_mid' => $nilai_raport_mid,
+            'hph' => $hph,
+            'pas' => $pas,
+            'hpas' => $hpas,
+            'nilai_raport_final' => $nilai_raport_final,
+            'deskripsi' => $deskripsi,
         ];
         if ($id_nilai == '') {
             $this->db->insert('nilai', $data);
@@ -104,6 +122,7 @@ class Guru extends CI_Controller
         } else {
             $this->db->where('id_nilai', $id_nilai);
             $this->db->update('nilai', $data);
+            redirect('guru/nilai');
         }
     }
 }
