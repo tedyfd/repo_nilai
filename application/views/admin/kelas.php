@@ -4,12 +4,12 @@
         <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-                <h3 class="mb-0">Guru</h3>
+                <h3 class="mb-0">Kelas</h3>
             </div>
             <div class="container mb-md-3">
                 <div class="row">
                     <div class="col col-md-3">
-                        <a href="<?= base_url('admin/guru_add') ?>"
+                        <a href="<?= base_url('admin/kelas_add') ?>"
                             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-upload fa-sm text-white-50"></i> Tambah Data</a>
                     </div>
@@ -20,24 +20,15 @@
                     <thead class="thead-light">
                         <tr>
                             <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>Aksi</th>
-
+                            <th>kelas</th>
                         </tr>
                     </thead>
                     <tbody class="list">
                         <?php $n = 1; ?>
-                        <?php foreach ($guru as $row) : ?>
+                        <?php foreach ($kelas as $row) : ?>
                         <tr>
                             <td><?= $n++; ?></td>
-                            <td><?= $row['nip'] ?></td>
-                            <td><?= $row['nama'] ?></td>
-                            <td>
-                                <a href="guru_edit/<?= $row['nip'] ?>" class="text-primary">Ubah</a>
-                                |
-                                <a href="guru_del/<?= $row['nip'] ?>" class="text-primary">Hapus</a>
-                            </td>
+                            <td><?= $row['kelas'] ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

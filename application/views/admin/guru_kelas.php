@@ -25,7 +25,7 @@
                             <th>tahun ajaran</th>
                             <th>kelas</th>
                             <th>matpel</th>
-
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -38,7 +38,13 @@
                             <td><?= $row['th_ajaran'] ?></td>
                             <td><?= $row['kelas'] ?></td>
                             <td><?= $row['matpel'] ?></td>
-
+                            <td>
+                                <a href="<?= base_url('admin/') ?>guru_kelas_edit/<?= $row['id_guru_kelas'] ?>"
+                                    class="text-primary">Ubah</a>
+                                |
+                                <a href="<?= base_url('admin/') ?>guru_kelas_del/<?= $row['id_guru_kelas'] ?>"
+                                    class="text-primary">Hapus</a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

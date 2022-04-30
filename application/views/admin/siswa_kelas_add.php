@@ -11,7 +11,7 @@ INNER JOIN matpel ON kelas_ajaran.id_matpel = matpel.id_matpel")->result_array()
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-8">
-                        <h3 class="mb-0">Kelas Tahun Ajaran </h3>
+                        <h3 class="mb-0">Siswa Kelas</h3>
                     </div>
                     <div class="col-4 text-right">
                     </div>

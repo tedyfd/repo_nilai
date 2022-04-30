@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
 
                     <h6 class="navbar-heading p-0 text-muted">
-                        <span class="docs-normal">menu</span>
+                        <span class="docs-normal">Relasi</span>
                     </h6>
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
@@ -53,7 +53,25 @@
                         </li>
                     </ul>
                     <hr class="my-3">
-
+                    <h6 class="navbar-heading p-0 text-muted">
+                        <span class="docs-normal">Data</span>
+                    </h6>
+                    <ul class="navbar-nav mb-md-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('admin/kelas') ?>" target="">
+                                <i class=""></i>
+                                <span class="nav-link-text">Kelas</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mb-md-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('admin/matpel') ?>" target="">
+                                <i class=""></i>
+                                <span class="nav-link-text">Mata Pelajaran</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

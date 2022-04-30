@@ -22,6 +22,7 @@
                             <th>No</th>
                             <th>NIS</th>
                             <th>Nama</th>
+                            <th>Aksi</th>
 
                         </tr>
                     </thead>
@@ -32,6 +33,11 @@
                             <td><?= $n++; ?></td>
                             <td><?= $row['nis'] ?></td>
                             <td><?= $row['nama'] ?></td>
+                            <td>
+                                <a href="siswa_edit/<?= $row['nis'] ?>" class="text-primary">Ubah</a>
+                                |
+                                <a href="siswa_del/<?= $row['nis'] ?>" class="text-primary">Hapus</a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

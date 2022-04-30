@@ -4,7 +4,7 @@
         <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-                <h3 class="mb-0">Kelas Tahun Ajaran</h3>
+                <h3 class="mb-0">Siswa Kelas</h3>
             </div>
             <div class="container mb-md-3">
                 <div class="row">
@@ -25,7 +25,7 @@
                             <th>tahun ajaran</th>
                             <th>kelas</th>
                             <th>matpel</th>
-
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -38,7 +38,13 @@
                             <td><?= $row['th_ajaran'] ?></td>
                             <td><?= $row['kelas'] ?></td>
                             <td><?= $row['matpel'] ?></td>
-
+                            <td>
+                                <a href="<?= base_url('admin/') ?>siswa_kelas_edit/<?= $row['id_siswa_kelas'] ?>"
+                                    class="text-primary">Ubah</a>
+                                |
+                                <a href="<?= base_url('admin/') ?>siswa_kelas_del/<?= $row['id_siswa_kelas'] ?>"
+                                    class="text-primary">Hapus</a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

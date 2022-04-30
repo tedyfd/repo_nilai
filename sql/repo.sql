@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.11-MariaDB)
-# Date: 2022-04-24 19:29:25
+# Date: 2022-04-30 13:42:02
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -18,7 +18,7 @@ CREATE TABLE `admin` (
 # Data for table "admin"
 #
 
-INSERT INTO `admin` VALUES (1,'smp','$2y$10$mYKG9b3LyiWR1Qi5jL6u1uGQWSIiAbh0P6LXgarezt7bksrUS5f9y');
+INSERT INTO `admin` VALUES (1,'admin','$2y$10$N3XVvLjVBp2rjQ7F00HBKeLeOgtjEw2e5dii0zggLdRUyHEFxif2a');
 
 #
 # Structure for table "guru"
@@ -47,7 +47,7 @@ CREATE TABLE `guru_kelas` (
   `id_kelas_ajaran` varchar(255) DEFAULT NULL,
   `nip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_guru_kelas`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "guru_kelas"
@@ -63,13 +63,13 @@ CREATE TABLE `kelas` (
   `id_kelas` int(11) NOT NULL AUTO_INCREMENT,
   `kelas` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_kelas`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "kelas"
 #
 
-INSERT INTO `kelas` VALUES (1,'VII A'),(2,'VII B');
+INSERT INTO `kelas` VALUES (1,'VII A'),(2,'VII B'),(3,'VII C');
 
 #
 # Structure for table "kelas_ajaran"
@@ -81,7 +81,7 @@ CREATE TABLE `kelas_ajaran` (
   `id_kelas` varchar(255) DEFAULT NULL,
   `id_matpel` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_kelas_ajaran`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "kelas_ajaran"
@@ -97,13 +97,13 @@ CREATE TABLE `matpel` (
   `id_matpel` int(11) NOT NULL AUTO_INCREMENT,
   `matpel` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_matpel`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "matpel"
 #
 
-INSERT INTO `matpel` VALUES (1,'Bahasa Indonesia'),(2,'Matematika');
+INSERT INTO `matpel` VALUES (1,'Bahasa Indonesia'),(2,'Matematika'),(3,'tes');
 
 #
 # Structure for table "nilai"
@@ -113,13 +113,11 @@ CREATE TABLE `nilai` (
   `id_nilai` int(11) NOT NULL AUTO_INCREMENT,
   `nis` varchar(255) DEFAULT NULL,
   `semester` varchar(255) DEFAULT NULL,
-  `th_ajaran` varchar(255) DEFAULT NULL,
-  `kelas` varchar(255) DEFAULT NULL,
-  `matpel` varchar(255) DEFAULT NULL,
-  `nilai` varchar(255) DEFAULT NULL,
+  `id_kelas_ajaran` varchar(255) DEFAULT NULL,
   `tugas_harian` varchar(255) DEFAULT NULL,
   `pts` varchar(255) DEFAULT NULL,
   `hpts` varchar(255) DEFAULT NULL,
+  `predikat_mid` varchar(255) DEFAULT NULL,
   `nilai_raport_mid` varchar(255) DEFAULT NULL,
   `hph` varchar(255) DEFAULT NULL,
   `pas` varchar(255) DEFAULT NULL,
@@ -133,7 +131,7 @@ CREATE TABLE `nilai` (
 # Data for table "nilai"
 #
 
-INSERT INTO `nilai` VALUES (1,'123',NULL,'','','','200','20','20','20','20','20','20','20','20','tes');
+INSERT INTO `nilai` VALUES (1,'123',NULL,'1','20','25','20','C','21.666666666667','20','23','20','21.166666666667','tes');
 
 #
 # Structure for table "siswa"

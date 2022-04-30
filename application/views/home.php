@@ -68,7 +68,7 @@
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
                         &copy; <?= date("Y") ?> <a href="https://www.uib.ac.id/" class="font-weight-bold ml-1"
-                            target="_blank">Universitas Internasional Batam</a>
+                            target="_blank">Universitas Universal Batam</a>
                     </div>
                 </div>
 

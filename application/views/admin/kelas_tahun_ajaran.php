@@ -34,7 +34,11 @@
                             <td><?= $row['th_ajaran'] ?></td>
                             <td><?= $row['kelas'] ?></td>
                             <td><?= $row['matpel'] ?></td>
+                            <td>
 
+                                <a href="kelas_tahun_ajaran_del/<?= $row['id_kelas_ajaran'] ?>"
+                                    class="text-primary">Hapus</a>
+                            </td>
 
                         </tr>
                         <?php endforeach; ?>

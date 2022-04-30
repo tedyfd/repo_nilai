@@ -23,6 +23,7 @@ class Admin extends CI_Controller
 
         $this->load->view('admin/index', $data);
     }
+
     public function kelas_tahun_ajaran()
     {
         $data['title'] = 'kelas_tahun_ajaran';
@@ -38,6 +39,7 @@ class Admin extends CI_Controller
         INNER JOIN matpel ON kelas_ajaran.id_matpel = matpel.id_matpel")->result_array();
         $this->load->view('admin/kelas_tahun_ajaran', $data);
     }
+
     public function kelas_tahun_ajaran_add()
     {
         $this->load->library('form_validation');
@@ -58,6 +60,7 @@ class Admin extends CI_Controller
             $this->_kelas_tahun_ajaran_add();
         }
     }
+
     private function _kelas_tahun_ajaran_add()
     {
         $th_ajaran = $this->input->post('th_ajaran');
@@ -79,6 +82,13 @@ class Admin extends CI_Controller
         }
         $this->db->insert_batch('kelas_ajaran', $data);
         $this->session->set_flashdata('message', 'telah ditambahkan');
+        redirect('admin/kelas_tahun_ajaran');
+    }
+
+    public function kelas_tahun_ajaran_del($id)
+    {
+        $this->db->delete('kelas_ajaran', array('id_kelas_ajaran' => $id));
+        $this->session->set_flashdata('message', 'telah dihapus');
         redirect('admin/kelas_tahun_ajaran');
     }
 
@@ -128,6 +138,41 @@ class Admin extends CI_Controller
         $this->db->insert('guru', $data);
         $this->session->set_flashdata('message', 'telah ditambahkan');
         redirect('admin/guru');
+    }
+
+    public function guru_edit($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nip', 'nip', 'required|trim');
+        $this->form_validation->set_rules('nama', 'nama', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'guru_add';
+
+            //model
+            $data['guru'] = $this->db->query("SELECT * FROM GURU WHERE nip='$id'")->row_array();
+
+            //name 
+            $data['page'] = 'guru_add';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/guru_edit', $data);
+        } else {
+            $this->_guru_edit();
+        }
+    }
+
+    private function _guru_edit()
+    {
+
+        $nip = $this->input->post('nip');
+        $nama = $this->input->post('nama');
+
+        $data = [
+            'nama' => $nama,
+        ];
+        $this->db->where('nip', $nip);
+        $this->db->update('guru', $data);
+        redirect("admin/guru");
     }
 
     public function guru_kelas()
@@ -191,6 +236,46 @@ class Admin extends CI_Controller
         redirect('admin/guru_kelas');
     }
 
+    public function guru_kelas_edit($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('id_kelas_ajaran', 'id_kelas_ajaran', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'siswa';
+
+            //model
+            $data['guru_kelas'] = $this->db->query("SELECT * from guru
+            inner join guru_kelas on guru.nip = guru_kelas.nip
+            inner join kelas_ajaran on guru_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
+            inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
+            inner join matpel on kelas_ajaran.id_matpel = matpel.id_matpel
+            WHERE guru_kelas.id_guru_kelas='$id'
+            ")->row_array();
+
+            //name 
+            $data['page'] = 'siswa';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/guru_kelas_edit', $data);
+        } else {
+            $this->_guru_kelas_edit();
+        }
+    }
+
+    private function _guru_kelas_edit()
+    {
+
+        $id_guru_kelas = $this->input->post('id_guru_kelas');
+        $id_kelas_ajaran = $this->input->post('id_kelas_ajaran');
+
+        $data = [
+            'id_kelas_ajaran' => $id_kelas_ajaran,
+        ];
+        $this->db->where('id_guru_kelas', $id_guru_kelas);
+        $this->db->update('guru_kelas', $data);
+        redirect("admin/guru_kelas/");
+    }
+
     public function siswa()
     {
         $data['title'] = 'siswa';
@@ -238,6 +323,42 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', 'telah ditambahkan');
         redirect('admin/siswa');
     }
+
+    public function siswa_edit($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nis', 'nis', 'required|trim');
+        $this->form_validation->set_rules('nama', 'nama', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'siswa';
+
+            //model
+            $data['siswa'] = $this->db->query("SELECT * FROM siswa WHERE nis='$id'")->row_array();
+
+            //name 
+            $data['page'] = 'siswa';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/siswa_edit', $data);
+        } else {
+            $this->_siswa_edit();
+        }
+    }
+
+    private function _siswa_edit()
+    {
+
+        $nis = $this->input->post('nis');
+        $nama = $this->input->post('nama');
+
+        $data = [
+            'nama' => $nama,
+        ];
+        $this->db->where('nis', $nis);
+        $this->db->update('siswa', $data);
+        redirect("admin/siswa");
+    }
+
 
     public function siswa_kelas()
     {
@@ -298,5 +419,136 @@ class Admin extends CI_Controller
         $this->db->insert_batch('siswa_kelas', $data);
         $this->session->set_flashdata('message', 'telah ditambahkan');
         redirect('admin/siswa_kelas');
+    }
+
+    public function siswa_kelas_edit($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('id_kelas_ajaran', 'id_kelas_ajaran', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'siswa';
+
+            //model
+            $data['siswa_kelas'] = $this->db->query("SELECT * from siswa
+            inner join siswa_kelas on siswa.nis = siswa_kelas.nis
+            inner join kelas_ajaran on siswa_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
+            inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
+            inner join matpel on kelas_ajaran.id_matpel = matpel.id_matpel
+            WHERE siswa_kelas.id_siswa_kelas='$id'
+            ")->row_array();
+
+            //name 
+            $data['page'] = 'siswa';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/siswa_kelas_edit', $data);
+        } else {
+            $this->_siswa_kelas_edit();
+        }
+    }
+
+    private function _siswa_kelas_edit()
+    {
+
+        $id_siswa_kelas = $this->input->post('id_siswa_kelas');
+        $id_kelas_ajaran = $this->input->post('id_kelas_ajaran');
+
+        $data = [
+            'id_kelas_ajaran' => $id_kelas_ajaran,
+        ];
+        $this->db->where('id_siswa_kelas', $id_siswa_kelas);
+        $this->db->update('siswa_kelas', $data);
+        redirect("admin/siswa_kelas/");
+    }
+
+    public function siswa_kelas_del($id)
+    {
+        $this->db->delete('siswa_kelas', array('id_siswa_kelas' => $id));
+        $this->session->set_flashdata('message', 'telah dihapus');
+        redirect('admin/siswa_kelas');
+    }
+
+    public function matpel()
+    {
+        $data['title'] = 'matpel';
+
+        //model
+
+        //name 
+        $data['page'] = 'matpel';
+        $data['profile'] = 'smp';
+
+        $data['matpel'] = $this->db->query("SELECT * FROM matpel")->result_array();
+        $this->load->view('admin/matpel', $data);
+    }
+
+    public function matpel_add()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('matpel', 'matpel', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'matpel_add';
+            //model
+
+            //name 
+            $data['page'] = 'matpel_add';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/matpel_add', $data);
+        } else {
+            $this->_matpel_add();
+        }
+    }
+
+    private function _matpel_add()
+    {
+        $data = array(
+            'matpel' =>  $this->input->post('matpel'),
+        );
+        $this->db->insert('matpel', $data);
+        $this->session->set_flashdata('message', 'telah ditambahkan');
+        redirect('admin/matpel');
+    }
+
+    public function kelas()
+    {
+        $data['title'] = 'kelas';
+
+        //model
+
+        //name 
+        $data['page'] = 'kelas';
+        $data['profile'] = 'smp';
+
+        $data['kelas'] = $this->db->query("SELECT * FROM kelas")->result_array();
+        $this->load->view('admin/kelas', $data);
+    }
+
+    public function kelas_add()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('kelas', 'kelas', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'kelas_add';
+            //model
+
+            //name 
+            $data['page'] = 'kelas_add';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/kelas_add', $data);
+        } else {
+            $this->_kelas_add();
+        }
+    }
+
+    private function _kelas_add()
+    {
+        $data = array(
+            'kelas' =>  $this->input->post('kelas'),
+        );
+        $this->db->insert('kelas', $data);
+        $this->session->set_flashdata('message', 'telah ditambahkan');
+        redirect('admin/kelas');
     }
 }
