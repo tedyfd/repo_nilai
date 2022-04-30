@@ -510,6 +510,48 @@ class Admin extends CI_Controller
         redirect('admin/matpel');
     }
 
+    public function matpel_edit($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('id_matpel', 'id_matpel', 'required|trim');
+        $this->form_validation->set_rules('matpel', 'matpel', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'matpel';
+
+            //model
+            $data['matpel'] = $this->db->query("SELECT * FROM matpel WHERE id_matpel='$id'")->row_array();
+
+            //name 
+            $data['page'] = 'siswa';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/matpel_edit', $data);
+        } else {
+            $this->_matpel_edit();
+        }
+    }
+
+    private function _matpel_edit()
+    {
+
+        $id_matpel = $this->input->post('id_matpel');
+        $matpel = $this->input->post('matpel');
+
+        $data = [
+            'matpel' => $matpel,
+        ];
+        $this->db->where('id_matpel', $id_matpel);
+        $this->db->update('matpel', $data);
+        redirect("admin/matpel");
+    }
+
+    public function matpel_del($id)
+    {
+        $this->db->delete('matpel', array('id_matpel' => $id));
+        $this->session->set_flashdata('message', 'telah dihapus');
+        redirect('admin/matpel');
+    }
+
     public function kelas()
     {
         $data['title'] = 'kelas';
@@ -550,5 +592,40 @@ class Admin extends CI_Controller
         $this->db->insert('kelas', $data);
         $this->session->set_flashdata('message', 'telah ditambahkan');
         redirect('admin/kelas');
+    }
+
+    public function kelas_edit($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('id_kelas', 'id_kelas', 'required|trim');
+        $this->form_validation->set_rules('kelas', 'matpel', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'kelas';
+
+            //model
+            $data['kelas'] = $this->db->query("SELECT * FROM kelas where id_kelas='$id'")->row_array();
+
+            //name 
+            $data['page'] = 'siswa';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/kelas_edit', $data);
+        } else {
+            $this->_kelas_edit();
+        }
+    }
+
+    private function _kelas_edit()
+    {
+
+        $id_kelas = $this->input->post('id_kelas');
+        $kelas = $this->input->post('kelas');
+
+        $data = [
+            'kelas' => $kelas,
+        ];
+        $this->db->where('id_kelas', $id_kelas);
+        $this->db->update('kelas', $data);
+        redirect("admin/kelas");
     }
 }

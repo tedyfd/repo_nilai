@@ -21,6 +21,7 @@
                         <tr>
                             <th>No</th>
                             <th>kelas</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -29,6 +30,11 @@
                         <tr>
                             <td><?= $n++; ?></td>
                             <td><?= $row['kelas'] ?></td>
+                            <td>
+                                <a href="kelas_edit/<?= $row['id_kelas'] ?>" class="text-primary">Ubah</a>
+                                |
+                                <a href="kelas_del/<?= $row['id_kelas'] ?>" class="text-primary">Hapus</a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

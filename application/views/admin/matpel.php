@@ -21,6 +21,7 @@
                         <tr>
                             <th>No</th>
                             <th>Matapelajaran</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -29,6 +30,11 @@
                         <tr>
                             <td><?= $n++; ?></td>
                             <td><?= $row['matpel'] ?></td>
+                            <td>
+                                <a href="matpel_edit/<?= $row['id_matpel'] ?>" class="text-primary">Ubah</a>
+                                |
+                                <a href="matpel_del/<?= $row['id_matpel'] ?>" class="text-primary">Hapus</a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
