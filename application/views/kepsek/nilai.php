@@ -1,4 +1,4 @@
-<?php $this->load->view('guru/templates/header') ?>
+<?php $this->load->view('kepsek/templates/header') ?>
 <div class="row">
     <div class="col">
         <div class="card">
@@ -12,8 +12,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th>No</th>
-                            <th>Nis</th>
-                            <th>Nama siswa</th>
+                            <th>Tahun Ajaran</th>
                             <th>Kelas</th>
                             <th>Matpel</th>
                             <th>Detail</th>
@@ -24,20 +23,14 @@
                         <?php foreach ($nilai as $row) : ?>
                         <tr>
                             <td><?= $n++; ?></td>
-                            <td><?= $row['nis'] ?></td>
-                            <td><?= $row['nama'] ?></td>
+                            <td> <?= $row['th_ajaran'] ?> </td>
                             <td><?= $row['kelas'] ?></td>
                             <td><?= $row['matpel'] ?></td>
-                            <?php if ($row['id_nilai'] == '') : ?>
-                            <td><a class="btn btn-danger"
-                                    href="<?= base_url('guru/nilai_siswa/') . $row['nis'] . '/' . $row['id_kelas_ajaran'] ?>">Belum
-                                    dinilai</a></td>
-                            <?php else : ?>
-                            <td> <a href="<?= base_url('guru/nilai_siswa/') . $row['nis'] . '/' . $row['id_kelas_ajaran'] ?>"
+                            <td> <a href="<?= base_url('kepsek/nilai/') . $row['id_kelas_ajaran'] ?>"
                                     class="btn btn-primary">
-                                    Edit nilai </a>
+                                    Detail </a>
                             </td>
-                            <?php endif; ?>
+
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -49,4 +42,4 @@
         </div>
     </div>
 </div>
-<?php $this->load->view('guru/templates/footer') ?>
+<?php $this->load->view('kepsek/templates/footer') ?>

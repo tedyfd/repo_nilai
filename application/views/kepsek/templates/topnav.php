@@ -28,7 +28,7 @@
                                         <img alt="Image placeholder" src="<?= base_url() ?>assets/img/theme/team-4.png">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold"><?= $profile['nip'] ?></span>
+                                        <span class="mb-0 text-sm  font-weight-bold"><?= $profile['username'] ?></span>
                                     </div>
                                 </div>
                             </a>
@@ -37,13 +37,13 @@
                                     <h6 class="text-overflow m-0">Welcome!</h6>
                                 </div>
 
-                                <a href="<?= base_url('guru/setting') ?>" class="dropdown-item">
+                                <a href="<?= base_url('kepsek/setting') ?>" class="dropdown-item">
                                     <i class="ni ni-settings-gear-65"></i>
                                     <span>Settings</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
-                                <a href="<?= base_url('Login_guru/logout') ?>" class="dropdown-item">
+                                <a href="<?= base_url('Login_kepsek/logout') ?>" class="dropdown-item">
                                     <i class="ni ni-user-run"></i>
                                     <span>Logout</span>
                                 </a>

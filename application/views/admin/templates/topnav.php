@@ -25,7 +25,7 @@
                                 aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="Image placeholder" src="<?= base_url() ?>assets/img/theme/team-4.jpg">
+                                        <img alt="Image placeholder" src="<?= base_url() ?>assets/img/theme/team-4.png">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold"><?= $profile ?></span>
@@ -36,10 +36,7 @@
                                 <div class="dropdown-header noti-title">
                                     <h6 class="text-overflow m-0">Welcome!</h6>
                                 </div>
-                                <a href="<?= base_url('admin/profile/') ?>" class="dropdown-item">
-                                    <i class="ni ni-single-02"></i>
-                                    <span>My profile</span>
-                                </a>
+
                                 <a href="<?= base_url('admin/setting') ?>" class="dropdown-item">
                                     <i class="ni ni-settings-gear-65"></i>
                                     <span>Settings</span>

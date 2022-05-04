@@ -15,7 +15,7 @@ class Login_adm extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = "SMPS Maitreyawira";
+            $data['title'] = "Login Admin";
             $this->load->view('login/index', $data);
         } else {
             $this->_login();

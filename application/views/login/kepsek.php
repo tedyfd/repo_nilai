@@ -34,37 +34,46 @@
         <!-- Page content -->
         <div class="container mt--9 pb-5">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-7">
+                <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary border-0 mb-0">
                         <div class="card-body px-lg-5 py-lg-5">
+                            <div class="text-left text-muted mb-1">
+                                <small><a href="<?= base_url('') ?>">Back</a></small>
+                            </div>
                             <div class="text-center text-muted mb-4">
-                                <h2>Portal Akademik</h2>
+                                <h3>Kepala Sekolah</h3>
                             </div>
-                            <div class="btn-wrapper text-center">
-                                <a href="<?= base_url('login_adm') ?>" class="btn btn-neutral btn-icon mb-4">
-                                    <span class="btn-inner--icon"><img
-                                            src="<?= base_url('assets/img/brand/favicon.png') ?>"></span>
-                                    <span class="btn-inner--text">Admin</span>
-                                </a>
-                                <a href="<?= base_url('login_guru') ?>" class="btn btn-neutral btn-icon mb-4">
-                                    <span class="btn-inner--icon"><img
-                                            src="<?= base_url('assets/img/brand/favicon.png') ?>"></span>
-                                    <span class="btn-inner--text">Guru</span>
-                                </a>
-                                <a href="<?= base_url('login_kepsek') ?>" class="btn btn-neutral btn-icon mb-4">
-                                    <span class="btn-inner--icon"><img
-                                            src="<?= base_url('assets/img/brand/favicon.png') ?>"></span>
-                                    <span class="btn-inner--text">Kepsek</span>
-                                </a>
-                            </div>
+                            <?= $this->session->flashdata('message') ?>
+                            <form method="POST" action="<?= base_url('login_kepsek') ?>">
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                                        </div>
+                                        <input name="username" class="form-control" placeholder="Username" type="text">
+                                    </div>
+                                    <?= form_error('nis', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        <input name="password" class="form-control" placeholder="Password"
+                                            type="password">
+                                    </div>
+                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                                </div>
+                            </form>
                         </div>
-
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- Footer -->
     <footer class="py-5" id="footer-main">

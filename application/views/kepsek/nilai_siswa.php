@@ -1,4 +1,4 @@
-<?php $this->load->view('guru/templates/header') ?>
+<?php $this->load->view('kepsek/templates/header') ?>
 <div class="row">
     <div class="col">
         <div class="card">
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="POST" action="<?= base_url('guru/nilai_siswa_add') ?>" id="form">
+                <form>
                     <h6 class="heading-small text-muted mb-4"></h6>
                     <div class="pl-lg-4">
                         <input type="hidden" name="id_nilai" id="id_nilai" class="form-control"
@@ -61,34 +61,34 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="tugas_harian">Tugas Harian</label>
                                     <input type="number" name="tugas_harian" id="tugas_harian" class="form-control"
-                                        value="<?= $nilai['tugas_harian'] ?>">
+                                        value="<?= $nilai['tugas_harian'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="form-control-label" for="pts">PTS</label>
                                     <input type="number" name="pts" id="pts" class="form-control"
-                                        value="<?= $nilai['pts'] ?>">
+                                        value="<?= $nilai['pts'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="form-control-label" for="hpts">HPTS</label>
                                     <input type="number" name="hpts" id="hpts" class="form-control"
-                                        value="<?= $nilai['hpts'] ?>">
+                                        value="<?= $nilai['hpts'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="form-control-label" for="predikat_mid">Predikat</label>
-                                    <select type="number" name="predikat_mid" id="predikat_mid" class="form-control">
-                                        <option value="<?= $nilai['predikat_mid'] ?>"><?= $nilai['predikat_mid'] ?>
-                                        </option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
+                                    <select type="number" name="predikat_mid" id="predikat_mid" class="form-control"
+                                        disabled>
+                                        <option><?= $nilai['predikat_mid'] ?></option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                        <option>E</option>
                                     </select>
                                 </div>
                             </div>
@@ -105,21 +105,21 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="hph">HPH</label>
                                     <input type="number" name="hph" id="hph" class="form-control"
-                                        value="<?= $nilai['hph'] ?>">
+                                        value="<?= $nilai['hph'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="form-control-label" for="pas">PAS</label>
                                     <input type="number" name="pas" id="pas" class="form-control"
-                                        value="<?= $nilai['pas'] ?>">
+                                        value="<?= $nilai['pas'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="form-control-label" for="hpas">hpas</label>
                                     <input type="number" name="hpas" id="hpas" class="form-control"
-                                        value="<?= $nilai['hpas'] ?>">
+                                        value="<?= $nilai['hpas'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -134,7 +134,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="deskripsi">Deskripsi</label>
                                     <input type="text" name="deskripsi" id="deskripsi" class="form-control"
-                                        value="<?= $nilai['deskripsi'] ?>">
+                                        value="<?= $nilai['deskripsi'] ?>" disabled>
                                 </div>
                             </div>
                         </div>
@@ -150,4 +150,4 @@
         </div>
     </div>
 </div>
-<?php $this->load->view('guru/templates/footer') ?>
+<?php $this->load->view('kepsek/templates/footer') ?>

@@ -1,4 +1,4 @@
-<?php $this->load->view('guru/templates/header') ?>
+<?php $this->load->view('kepsek/templates/header') ?>
 <div class="row">
     <div class="col">
         <div class="card">
@@ -30,12 +30,12 @@
                             <td><?= $row['matpel'] ?></td>
                             <?php if ($row['id_nilai'] == '') : ?>
                             <td><a class="btn btn-danger"
-                                    href="<?= base_url('guru/nilai_siswa/') . $row['nis'] . '/' . $row['id_kelas_ajaran'] ?>">Belum
+                                    href="<?= base_url('kepsek/nilai_siswa/') . $row['nis'] . '/' . $row['id_kelas_ajaran'] ?>">Belum
                                     dinilai</a></td>
                             <?php else : ?>
-                            <td> <a href="<?= base_url('guru/nilai_siswa/') . $row['nis'] . '/' . $row['id_kelas_ajaran'] ?>"
+                            <td> <a href="<?= base_url('kepsek/nilai_siswa/') . $row['nis'] . '/' . $row['id_kelas_ajaran'] ?>"
                                     class="btn btn-primary">
-                                    Edit nilai </a>
+                                    Detail </a>
                             </td>
                             <?php endif; ?>
                         </tr>
@@ -49,4 +49,4 @@
         </div>
     </div>
 </div>
-<?php $this->load->view('guru/templates/footer') ?>
+<?php $this->load->view('kepsek/templates/footer') ?>

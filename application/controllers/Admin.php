@@ -24,6 +24,48 @@ class Admin extends CI_Controller
         $this->load->view('admin/index', $data);
     }
 
+    public function setting()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('password_lama', 'Password Lama', 'required|trim');
+        $this->form_validation->set_rules('password_1', 'Password Baru', 'required|trim');
+        $this->form_validation->set_rules('password_2', 'Konfirmasi Password', 'required|trim|matches[password_1]');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Dashboard';
+
+            //model
+
+            //name 
+            $data['page'] = 'Dashboard';
+            $data['profile'] = 'smp';
+
+            $this->load->view('admin/setting', $data);
+        } else {
+            $this->_update_password();
+        }
+    }
+
+    private function _update_password()
+    {
+        $password_lama = $this->input->post('password_lama');
+        $password = $this->input->post('password_1');
+
+        $user = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        if (password_verify($password_lama, $user['password'])) {
+            $data = array(
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+            );
+            $this->db->where('username', $this->session->userdata('username'));
+            $this->db->update('admin', $data);
+            $this->session->set_flashdata('message', 'Password Berhasil diubah!');
+            redirect('admin/setting');
+        } else {
+            $this->session->set_flashdata('err', '<div class="alert alert-danger text-center" role="alert">Password lama anda salah!</div>');
+            redirect('admin/setting');
+        }
+    }
+
     public function kelas_tahun_ajaran()
     {
         $data['title'] = 'kelas_tahun_ajaran';
