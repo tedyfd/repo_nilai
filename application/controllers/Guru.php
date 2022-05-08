@@ -102,7 +102,7 @@ class Guru extends CI_Controller
         inner join kelas_ajaran on siswa_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
         inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
         inner join matpel on kelas_ajaran.id_matpel = matpel.id_matpel
-        LEFT JOIN nilai on siswa_kelas.nis = nilai.nis
+        LEFT JOIN nilai on siswa_kelas.id_kelas_ajaran = nilai.id_kelas_ajaran
 				where siswa_kelas.id_kelas_ajaran='$id_kelas_ajaran'")->result_array();
 
         $this->load->view('guru/nilai_detail', $data);
@@ -121,7 +121,7 @@ class Guru extends CI_Controller
         inner join kelas_ajaran on siswa_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
         inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
         inner join matpel on kelas_ajaran.id_matpel = matpel.id_matpel
-        LEFT JOIN nilai on siswa.nis = nilai.nis
+        LEFT JOIN nilai on siswa_kelas.id_kelas_ajaran = nilai.id_kelas_ajaran
 		WHERE siswa.nis='$nis' AND siswa_kelas.id_kelas_ajaran='$id_kelas_ajaran'")->row_array();
 
         $this->load->view('guru/nilai_siswa', $data);
@@ -160,11 +160,12 @@ class Guru extends CI_Controller
         ];
         if ($id_nilai == '') {
             $this->db->insert('nilai', $data);
-            $this->session->set_flashdata('message', 'telah ditambahkan');
+            $this->session->set_flashdata('message', 'Data telah ditambahkan');
             redirect("guru/nilai");
         } else {
             $this->db->where('id_nilai', $id_nilai);
             $this->db->update('nilai', $data);
+            $this->session->set_flashdata('message', 'Data telah diubah');
             redirect("guru/nilai/$id_nilai");
         }
     }

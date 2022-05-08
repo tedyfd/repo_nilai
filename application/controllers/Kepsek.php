@@ -101,7 +101,7 @@ class Kepsek extends CI_Controller
         inner join kelas_ajaran on siswa_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
         inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
         inner join matpel on kelas_ajaran.id_matpel = matpel.id_matpel
-        LEFT JOIN nilai on siswa_kelas.nis = nilai.nis
+        LEFT JOIN nilai on siswa_kelas.id_kelas_ajaran = nilai.id_kelas_ajaran
 		WHERE siswa_kelas.id_kelas_ajaran='$id_kelas_ajaran'")->result_array();
 
         $this->load->view('kepsek/nilai_detail', $data);
@@ -120,7 +120,7 @@ class Kepsek extends CI_Controller
         inner join kelas_ajaran on siswa_kelas.id_kelas_ajaran = kelas_ajaran.id_kelas_ajaran
         inner join kelas on kelas_ajaran.id_kelas = kelas.id_kelas
         inner join matpel on kelas_ajaran.id_matpel = matpel.id_matpel
-        LEFT JOIN nilai on siswa.nis = nilai.nis
+        LEFT JOIN nilai on siswa_kelas.id_kelas_ajaran = nilai.id_kelas_ajaran
 		WHERE siswa.nis='$nis' AND siswa_kelas.id_kelas_ajaran='$id_kelas_ajaran'")->row_array();
 
         $this->load->view('kepsek/nilai_siswa', $data);

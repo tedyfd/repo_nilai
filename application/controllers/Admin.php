@@ -214,6 +214,7 @@ class Admin extends CI_Controller
         ];
         $this->db->where('nip', $nip);
         $this->db->update('guru', $data);
+        $this->session->set_flashdata('message', 'Data telah diubah');
         redirect("admin/guru");
     }
 
@@ -315,6 +316,7 @@ class Admin extends CI_Controller
         ];
         $this->db->where('id_guru_kelas', $id_guru_kelas);
         $this->db->update('guru_kelas', $data);
+        $this->session->set_flashdata('message', 'Data telah diubah');
         redirect("admin/guru_kelas/");
     }
 
@@ -398,6 +400,7 @@ class Admin extends CI_Controller
         ];
         $this->db->where('nis', $nis);
         $this->db->update('siswa', $data);
+        $this->session->set_flashdata('message', 'Data telah diubah');
         redirect("admin/siswa");
     }
 
@@ -500,6 +503,7 @@ class Admin extends CI_Controller
         ];
         $this->db->where('id_siswa_kelas', $id_siswa_kelas);
         $this->db->update('siswa_kelas', $data);
+        $this->session->set_flashdata('message', 'Data telah diubah');
         redirect("admin/siswa_kelas/");
     }
 
@@ -584,6 +588,7 @@ class Admin extends CI_Controller
         ];
         $this->db->where('id_matpel', $id_matpel);
         $this->db->update('matpel', $data);
+        $this->session->set_flashdata('message', 'Data telah diubah');
         redirect("admin/matpel");
     }
 
@@ -668,6 +673,7 @@ class Admin extends CI_Controller
         ];
         $this->db->where('id_kelas', $id_kelas);
         $this->db->update('kelas', $data);
+        $this->session->set_flashdata('message', 'Data telah diubah');
         redirect("admin/kelas");
     }
 }

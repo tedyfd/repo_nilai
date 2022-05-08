@@ -46,7 +46,14 @@
 <!-- sweetalert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-
+const success = $('#flash-data').data('flashdata');
+if (success) {
+    Swal.fire({
+        title: 'SUCCESS',
+        text: '' + success,
+        icon: 'success'
+    });
+}
 </script>
 </body>
 
